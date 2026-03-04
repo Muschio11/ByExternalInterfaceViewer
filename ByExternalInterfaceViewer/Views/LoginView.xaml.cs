@@ -17,11 +17,12 @@ namespace ByExternalInterfaceViewer.Views
     /// </summary>
     public partial class LoginView
     {
-        public LoginView()
+        public LoginView( LoginViewModel viewModel)
         {
             
             InitializeComponent();
-            DataContext = new LoginViewModel(this);
+            DataContext = viewModel;
+            viewModel.AttachView(this);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

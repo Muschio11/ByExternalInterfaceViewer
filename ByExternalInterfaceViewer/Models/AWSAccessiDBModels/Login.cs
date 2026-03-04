@@ -4,8 +4,9 @@ using System.Text;
 
 namespace ByExternalInterfaceViewer.Models.LoginModels
 {
-    public class CbLogin
+    public class Login
     {
-        public string Name { get; set; }
+        public string Usermane { get; set; }
+        public string Password { get; set; }    
     }
 }

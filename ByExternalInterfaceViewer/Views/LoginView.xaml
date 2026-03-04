@@ -18,10 +18,15 @@
             <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Row="0">
-            <Image Source="/Images/2025-12-31_15h48_39.png" Height="100"/>
-            <TextBlock Text="External Interface viewer" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20 0 0" />
+
+        <StackPanel Grid.Row="0" Height="103" Width="86" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Image Source="pack://application:,,,/Images/2025-12-31_15h48_39.png" Width="86" Height="103" VerticalAlignment="center" />
         </StackPanel>
+        <TextBlock Text="V:" FontSize="12" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="250 10 0 0"/>
+        <TextBlock Text="{Binding SwVersion}" FontSize="12" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="300 10 0 0"/>
+        <TextBlock Text="External Interface viewer" FontSize="30" Foreground="White" HorizontalAlignment="Center" Margin="0 120 0 0" />
+
+
         <StackPanel Grid.Row="1">
             <TextBlock Text="Username" FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 30 120 0"  />
             <ComboBox ItemsSource="{Binding Username}"  VerticalAlignment="Center" Margin="0 10" Width="200" Foreground="Black"/>
