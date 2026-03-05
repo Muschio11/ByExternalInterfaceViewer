@@ -29,11 +29,10 @@
 
         <StackPanel Grid.Row="1">
             <TextBlock Text="Username" FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 30 120 0"  />
-            <ComboBox ItemsSource="{Binding Username}"  VerticalAlignment="Center" Margin="0 10" Width="200" Foreground="Black"/>
+            <ComboBox ItemsSource="{Binding Username}" SelectedItem="{Binding SelectedUserName}" VerticalAlignment="Center" Margin="0 10" Width="200" Foreground="Black"/>
 
             <TextBlock Text="Password" FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 40 120 0"  />
             <PasswordBox Name="Passwordbox" PasswordChanged="Passwordbox_PasswordChanged" Margin="0 10 0 0 " Width="200">
-
             </PasswordBox>
         </StackPanel>
 

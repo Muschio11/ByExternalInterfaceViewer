@@ -10,35 +10,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ByExternalInterfaceViewer.ViewModels;
-namespace ByExternalInterfaceViewer.Views
+
+namespace ByExternalInterfaceViewer.Views;
+
+/// <summary>
+/// Interaction logic for LoginView.xaml
+/// </summary>
+public partial class LoginView
 {
-    /// <summary>
-    /// Interaction logic for LoginView.xaml
-    /// </summary>
-    public partial class LoginView
+    public string PasswordSelected { get; set; }
+    public LoginView( LoginViewModel viewModel)
     {
-        public LoginView( LoginViewModel viewModel)
-        {
-            
-            InitializeComponent();
-            DataContext = viewModel;
-            viewModel.AttachView(this);
-        }
+        
+        InitializeComponent();
+        DataContext = viewModel;
+        viewModel.AttachView(this);
+    }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if(e.LeftButton == MouseButtonState.Pressed)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
+            DragMove();
         }
+    }
 
-        private void Passwordbox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            var pb = sender as PasswordBox;
-            var vm = DataContext as LoginViewModel;
-            if (vm != null)
-                vm.Password = pb.Password;
-        }
+    private void Passwordbox_PasswordChanged(object sender, RoutedEventArgs e)
+    {
+        var pb = sender as PasswordBox;
+        var vm = DataContext as LoginViewModel;
+        if (vm != null)
+            vm.Password = pb.Password;
+        PasswordSelected = pb.Password;
     }
 }

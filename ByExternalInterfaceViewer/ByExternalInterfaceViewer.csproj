@@ -29,7 +29,6 @@
     <Folder Include="Models\Database3DBModels\" />
     <Folder Include="Models\ExternalinterfaceDBModels\" />
     <Folder Include="Properties\" />
-    <Folder Include="Services\AWSAccessiDB\" />
     <Folder Include="Services\Database3DB\" />
     <Folder Include="Services\ExternalInterfaceDB\" />
   </ItemGroup>

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ByExternalInterfaceViewer.Models.LoginModels
+namespace ByExternalInterfaceViewer.Models.AWSAccessiDBModelsodels;
+
+public class Login
 {
-    public class Login
-    {
-        public string Usermane { get; set; }
-        public string Password { get; set; }    
-    }
+    public string Username { get; set; }
+    public string Password { get; set; }    
 }
