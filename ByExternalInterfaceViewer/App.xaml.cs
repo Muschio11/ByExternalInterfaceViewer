@@ -29,6 +29,8 @@ public partial class App : Application
             .ConfigureServices(services =>
             {
                 services.AddDbContextFactory<AppDBContextLogin>(options => options.UseSqlServer(AWSAccessiConnectionString.GetConnectionStringToAwsAccessi()));
+                services.AddSingleton<IStartupService, StartupService>();
+                services.AddSingleton<LoadingWindowView>();
                 services.AddSingleton<LoginView>();
                 services.AddSingleton<LoginViewModel>();
                 services.AddSingleton<MainWindow>();
@@ -36,28 +38,16 @@ public partial class App : Application
             .Build();
     }
 
-    protected override void OnStartup(StartupEventArgs e)
+    protected override async void OnStartup(StartupEventArgs e)
     {
         _host?.Start();
-        base.OnStartup(e);
+        //base.OnStartup(e);
 
-        // Diagnostic DB connectivity check to provide immediate, clear feedback
-        try
-        {
-            var factory = _host.Services.GetRequiredService<IDbContextFactory<AppDBContextLogin>>();
-            using var ctx = factory.CreateDbContext();
-            if (!ctx.Database.CanConnect())
-            {
-                MessageBox.Show("Unable to connect to the database using the configured connection string. Verify server/port, SQL Browser, and firewall settings.", "Database connection error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Database connectivity check failed: {ex.Message}", "Database connectivity error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
+        var startupService = _host?.Services.GetRequiredService<IStartupService>();
 
-        var loginView = _host.Services.GetRequiredService<LoginView>();
-        loginView.ShowDialog();
+        await startupService?.StartAsync();
+
+
 
     }
 
