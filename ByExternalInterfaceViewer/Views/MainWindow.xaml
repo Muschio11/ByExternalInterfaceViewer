@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ByExternalInterfaceViewer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="ByEnternal Interface Viewer" Height="768" Width="1024"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True">
+    <Grid Background="#FF211B1B">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+
+
+
+
+        <Menu VerticalAlignment="Top" Background="#FF333333" Foreground="White">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Command="{Binding ExitCommand}" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem Header="Options">
+                <MenuItem Header="_Refresh" Command="{Binding SettingsCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RadioButton Grid.Column="0" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Movimentazioni" IsChecked="{Binding IsView1Selected}"/>
+                <RadioButton Grid.Column="1" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Contenuto Cassetti" IsChecked="{Binding IsView2Selected}"/>
+
+            </Grid>
+        </StackPanel>
+        
+
+        <ContentControl Grid.Row="2" Content="{Binding CurrentView}"/>
 
     </Grid>
 </Window>

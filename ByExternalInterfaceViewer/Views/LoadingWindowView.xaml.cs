@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ByExternalInterfaceViewer.Services;
+using ByExternalInterfaceViewer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,11 +17,14 @@ namespace ByExternalInterfaceViewer.Views
     /// <summary>
     /// Interaction logic for LoadingWindowView.xaml
     /// </summary>
-    public partial class LoadingWindowView
+    public partial class LoadingWindowView 
     {
-        public LoadingWindowView()
+        
+        public LoadingWindowView(LoadingWindowViewModel lwvm)
         {
             InitializeComponent();
+            DataContext = lwvm;
+
         }
     }
 }

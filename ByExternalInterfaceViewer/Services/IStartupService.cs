@@ -6,5 +6,5 @@ namespace ByExternalInterfaceViewer.Services;
 
 public interface IStartupService
 {
-    Task StartAsync();
+    Task<bool> StartAsync(IProgress<string> progress);
 }

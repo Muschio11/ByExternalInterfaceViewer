@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using ByExternalInterfaceViewer.Models.AWSAccessiDBModelsodels;
+﻿using ByExternalInterfaceViewer.Models.AWSAccessiDBModelsodels;
 using ByExternalInterfaceViewer.Services.AWSAccessiDB;
 using ByExternalInterfaceViewer.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 
 
 namespace ByExternalInterfaceViewer.ViewModels;
@@ -21,7 +22,9 @@ public partial class LoginViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<string> _username;
     private LoginView _currentLoginView;
+   
     private readonly IDbContextFactory<AppDBContextLogin> _dbContextAccessi;
+    private readonly IServiceProvider _serviceProvider;
 
     [ObservableProperty]
     private string _selectedUserName;
@@ -31,13 +34,17 @@ public partial class LoginViewModel : ObservableObject
     private string _password;
     [ObservableProperty]
     private string _SwVersion;
+    private object _mainwindow;
 
-    public LoginViewModel(IDbContextFactory<AppDBContextLogin> dbContextFactory)
+    public LoginViewModel(IDbContextFactory<AppDBContextLogin> dbContextFactory, IServiceProvider serviceProvider)
     {
         _dbContextAccessi = dbContextFactory;
         GlobalVersion globalVersion = new GlobalVersion();
         SwVersion = globalVersion.Version;
-        
+        _serviceProvider = serviceProvider;
+
+
+
     }
 
     public void AttachView(LoginView view)
@@ -96,7 +103,9 @@ public partial class LoginViewModel : ObservableObject
         var valid = await ValidatePasswordAsync();
         if (valid)
         {
-            var mainWindow = new MainWindow();
+
+            
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
             _currentLoginView?.Close();
         }

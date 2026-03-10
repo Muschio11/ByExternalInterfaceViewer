@@ -23,12 +23,12 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" 
-                       Text="Loading..." 
+                       Text="{Binding ProgressStatus}" 
                        Foreground="White" 
-                       FontSize="20" 
+                       FontSize="16" 
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Center" 
-                       Margin="30"/>
+                       Margin="10"/>
 
             <!-- Inserimento spinner -->
             <controls:Spinner Grid.Column="1"

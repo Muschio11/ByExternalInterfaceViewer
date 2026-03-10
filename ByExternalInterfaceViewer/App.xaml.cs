@@ -22,7 +22,7 @@ using ByExternalInterfaceViewer.Services.AWSAccessiDB;
 public partial class App : Application
 {
     private IHost? _host;
-
+    
     public App()
     {
         _host = Host.CreateDefaultBuilder()
@@ -31,9 +31,11 @@ public partial class App : Application
                 services.AddDbContextFactory<AppDBContextLogin>(options => options.UseSqlServer(AWSAccessiConnectionString.GetConnectionStringToAwsAccessi()));
                 services.AddSingleton<IStartupService, StartupService>();
                 services.AddSingleton<LoadingWindowView>();
+                services.AddSingleton<LoadingWindowViewModel>();
                 services.AddSingleton<LoginView>();
                 services.AddSingleton<LoginViewModel>();
                 services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainWindowViewModel>();
             })
             .Build();
     }
@@ -41,13 +43,33 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         _host?.Start();
-        //base.OnStartup(e);
+        
+        var loadingView = _host?.Services.GetRequiredService<LoadingWindowView>();
+        var loadingViewModel = _host?.Services.GetRequiredService<LoadingWindowViewModel>();
+        loadingView.Show();
+
+        var progress = new Progress<string>(message =>
+        {
+            loadingViewModel.ProgressStatus = message;
+        });
+
 
         var startupService = _host?.Services.GetRequiredService<IStartupService>();
+        
+        bool connected = await startupService.StartAsync(progress);
 
-        await startupService?.StartAsync();
+        var loginView = _host?.Services.GetRequiredService<LoginView>();
+        loadingView.Close();
 
-
+        if (!connected)
+        {
+            MessageBox.Show("Unable to connect to the database. Please check your connection and try again.", "Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            App.Current.Shutdown();
+        }
+        else
+        {
+            loginView.ShowDialog();
+        }
 
     }
 
