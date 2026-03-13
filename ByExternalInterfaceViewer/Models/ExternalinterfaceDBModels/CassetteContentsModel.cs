@@ -6,5 +6,6 @@ namespace ByExternalInterfaceViewer.Models.ExternalinterfaceDBModels
 {
     internal class CassetteContentsModel
     {
+        public int SheetGUID { get; set; }
     }
 }
