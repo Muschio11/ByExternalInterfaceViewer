@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ByExternalInterfaceViewer.Models.ExternalinterfaceDBModels;
+﻿namespace ByExternalInterfaceViewer.Models.ExternalinterfaceDBModels;
 
 public class CassetteContentsListModel
 {
-    public int SheetGUID { get; set; }
+    public long SheetGUID { get; set; }
     public string MaterialName { get; set; }
     public string MaterialDescription { get; set; }
     public double Lenght { get; set; } 
