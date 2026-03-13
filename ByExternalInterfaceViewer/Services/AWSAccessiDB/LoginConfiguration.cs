@@ -7,9 +7,9 @@ using System.Text;
 
 namespace ByExternalInterfaceViewer.Services.AWSAccessiDB;
 
-internal class LoginConfiguration : IEntityTypeConfiguration<Login>
+internal class LoginConfiguration : IEntityTypeConfiguration<LoginModel>
 {
-    public void Configure(EntityTypeBuilder<Login> entity)
+    public void Configure(EntityTypeBuilder<LoginModel> entity)
     {
         entity.ToTable("Utenti");
         entity.HasNoKey();

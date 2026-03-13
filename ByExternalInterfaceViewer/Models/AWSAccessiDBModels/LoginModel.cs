@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ByExternalInterfaceViewer.Models.AWSAccessiDBModelsodels;
 
-public class Login
+public class LoginModel
 {
     public string Username { get; set; }
     public string Password { get; set; }    

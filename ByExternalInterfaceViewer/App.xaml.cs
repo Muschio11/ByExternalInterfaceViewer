@@ -9,12 +9,14 @@ using System.Windows;
 
 namespace ByExternalInterfaceViewer;
 
+using ByExternalInterfaceViewer.Services.AWSAccessiDB;
+using ByExternalInterfaceViewer.Services.Database3DB;
+using ByExternalInterfaceViewer.Services.ExternalInterfaceDB;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using ByExternalInterfaceViewer.Services.AWSAccessiDB;
 
 /// <summary>
 /// Interaction logic for App.xaml
@@ -28,14 +30,16 @@ public partial class App : Application
         _host = Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddDbContextFactory<AppDBContextLogin>(options => options.UseSqlServer(AWSAccessiConnectionString.GetConnectionStringToAwsAccessi()));
+                services.AddDbContextFactory<AppDBContextLogin>(login => login.UseSqlServer(AWSAccessiConnectionString.GetConnectionStringToAwsAccessi()));
+                services.AddDbContextFactory<AppDBContextDatabase3>(db3 => db3.UseSqlServer(AWSDatabase3ConnectionString.GetConnectionStringToAwsDatabase3()));
+                services.AddDbContextFactory<AppDbContextExternalInterface>(extInt => extInt.UseSqlServer(ExternalInterfaceConnectionString.GetConnectionStringToExternalInterface()));
                 services.AddSingleton<IStartupService, StartupService>();
                 services.AddSingleton<LoadingWindowView>();
                 services.AddSingleton<LoadingWindowViewModel>();
-                services.AddSingleton<LoginView>();
-                services.AddSingleton<LoginViewModel>();
-                services.AddSingleton<MainWindow>();
-                services.AddSingleton<MainWindowViewModel>();
+                services.AddTransient<LoginView>();
+                services.AddTransient<LoginViewModel>();
+                services.AddTransient<MainWindow>();
+                services.AddTransient<MainWindowViewModel>();
             })
             .Build();
     }

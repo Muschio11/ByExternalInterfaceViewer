@@ -8,7 +8,7 @@ namespace ByExternalInterfaceViewer.Services.AWSAccessiDB
 {
     public class AppDBContextLogin : DbContext
     {
-        public DbSet<Login> Logins { get; set; }
+        public DbSet<LoginModel> Logins { get; set; }
         public AppDBContextLogin(DbContextOptions<AppDBContextLogin> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
