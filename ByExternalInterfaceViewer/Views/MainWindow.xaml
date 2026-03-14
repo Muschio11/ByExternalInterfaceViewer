@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:ByExternalInterfaceViewer.ViewModels"
         xmlns:views="clr-namespace:ByExternalInterfaceViewer.Views"
         mc:Ignorable="d"
-        Title="ByEnternal Interface Viewer" Height="768" Width="1024"
+        Title="ByExternal Interface Viewer" Height="768" Width="1024"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True">
@@ -38,14 +38,14 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <RadioButton Grid.Column="0" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Movimentazioni" IsChecked="{Binding IsView1Selected}"/>
-                <RadioButton Grid.Column="1" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Contenuto Cassetti" IsChecked="{Binding IsView2Selected}"/>
+                <RadioButton Grid.Column="0" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Movimentazioni" IsChecked="{Binding IsView1Selected}" Command="{Binding ShowMovementsListCommand}"/>
+                <RadioButton Grid.Column="1" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Contenuto Cassetti" IsChecked="{Binding IsView2Selected}" Command="{Binding ShowCassetteContentListCommand}"/>
 
             </Grid>
         </StackPanel>
         
 
-        <ContentControl Grid.Row="2" Content="{Binding CurrentView}"/>
+        <ContentControl Grid.Row="2" Content="{Binding CurrentViewModel}"/>
 
     </Grid>
 </Window>

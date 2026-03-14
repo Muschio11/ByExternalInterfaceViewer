@@ -17,12 +17,12 @@ namespace ByExternalInterfaceViewer.Views
     /// <summary>
     /// Interaction logic for CassetteContentsView.xaml
     /// </summary>
-    public partial class CassetteContentsView 
+    public partial class CassetteContentsView : UserControl
     {
-        public CassetteContentsView(CassetteContentsViewModel vm)
+        public CassetteContentsView()
         {
             InitializeComponent();
-            DataContext = vm;
+           
         }
     }
 }

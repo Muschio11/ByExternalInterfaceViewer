@@ -11,6 +11,14 @@
                 <ResourceDictionary Source="Styles/Button.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <DataTemplate DataType="{x:Type vm:CassetteContentsViewModel}">
+                <views:CassetteContentsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MovementsListViewModel}">
+                <views:MovementsListView/>
+            </DataTemplate>
+
 
         </ResourceDictionary>
 

@@ -8,6 +8,6 @@ namespace ByExternalInterfaceViewer
     public  class GlobalVersion() 
     {
         
-        public string Version { get; set; } = "1.0.0";
+        public string Version { get; set; } = "1.5.3";
     }
 }

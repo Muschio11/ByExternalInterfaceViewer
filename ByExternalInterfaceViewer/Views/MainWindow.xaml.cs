@@ -22,5 +22,7 @@ namespace ByExternalInterfaceViewer
             InitializeComponent();
             DataContext= vm;   
         }
+
+       
     }
 }

@@ -7,10 +7,9 @@ namespace ByExternalInterfaceViewer.Views
     /// </summary>
     public partial class MovementsListView
     {
-        public MovementsListView(MovementsListViewModel vm)
+        public MovementsListView()
         {
             InitializeComponent();
-            DataContext = vm;
         }
     }
 }
