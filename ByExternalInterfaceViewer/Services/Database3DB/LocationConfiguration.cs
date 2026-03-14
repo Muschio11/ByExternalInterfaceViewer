@@ -15,9 +15,9 @@ public class LocationConfiguration : IEntityTypeConfiguration<LocationModel>
 
         entity.Property(e => e.LocationID)
             .HasColumnName("LocazioneGUID");
-            
+
         entity.Property(e => e.LocationType)
-            .HasColumnName("TipoLocazione")
-            .HasMaxLength(50);
+            .HasColumnName("TipoLocazione");
+            
     }
 }
