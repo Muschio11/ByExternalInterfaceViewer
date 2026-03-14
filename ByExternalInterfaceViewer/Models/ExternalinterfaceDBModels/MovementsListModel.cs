@@ -7,7 +7,7 @@ public class MovementsListModel
     public string MaterialName { get; set; }
     public string MaterialDescription { get; set; }
     public double Lenght { get; set; }
-    public double width { get; set; }
+    public double Width { get; set; }
     public double Thickness { get; set; }
     public int Quantity { get; set; }
     public string? SheetType { get; set; }
