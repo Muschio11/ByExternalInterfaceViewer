@@ -17,7 +17,7 @@ namespace ByExternalInterfaceViewer.Views
     /// <summary>
     /// Interaction logic for CassetteContentsView.xaml
     /// </summary>
-    public partial class CassetteContentsView
+    public partial class CassetteContentsView 
     {
         public CassetteContentsView(CassetteContentsViewModel vm)
         {

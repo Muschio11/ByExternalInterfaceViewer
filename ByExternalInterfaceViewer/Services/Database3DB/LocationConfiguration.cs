@@ -12,6 +12,7 @@ public class LocationConfiguration : IEntityTypeConfiguration<LocationModel>
     public void Configure(EntityTypeBuilder<LocationModel> entity)
     {
         entity.ToTable("Locazioni");
+        entity.HasNoKey();
 
         entity.Property(e => e.LocationID)
             .HasColumnName("LocazioneGUID");

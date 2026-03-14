@@ -1,10 +1,12 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ByExternalInterfaceViewer.ViewModels
 {
-    public class MovementsListViewModel
+    public partial class MovementsListViewModel: ObservableObject
     {
+
     }
 }

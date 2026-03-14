@@ -14,6 +14,7 @@ namespace ByExternalInterfaceViewer.Services.AWSAccessiDB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDBContextLogin).Assembly);
+            
         }
     }
 }

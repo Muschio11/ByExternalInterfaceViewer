@@ -1,13 +1,19 @@
 ﻿<Application x:Class="ByExternalInterfaceViewer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ByExternalInterfaceViewer">
+             xmlns:local="clr-namespace:ByExternalInterfaceViewer"
+             xmlns:vm="clr-namespace:ByExternalInterfaceViewer.ViewModels"
+             xmlns:views="clr-namespace:ByExternalInterfaceViewer.Views">
 
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Button.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+
         </ResourceDictionary>
+
+        
     </Application.Resources>
 </Application>

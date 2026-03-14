@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ByExternalInterfaceViewer.ViewModels
 {
-    public class CassetteContentsViewModel
+    public partial class CassetteContentsViewModel : ObservableObject
     {
     }
 }
