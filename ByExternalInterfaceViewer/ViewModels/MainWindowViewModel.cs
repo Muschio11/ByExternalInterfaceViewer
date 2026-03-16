@@ -22,7 +22,7 @@ namespace ByExternalInterfaceViewer.ViewModels
             _cassetteContents = cassetteContentsViewModel;
             _movementsList = movementsListViewModel;
 
-            CurrentViewModel = _cassetteContents;
+            CurrentViewModel = _movementsList;
         }
 
         [RelayCommand]

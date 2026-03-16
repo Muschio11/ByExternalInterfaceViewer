@@ -10,6 +10,9 @@ namespace ByExternalInterfaceViewer.Views
         public MovementsListView()
         {
             InitializeComponent();
+         
         }
+
+ 
     }
 }

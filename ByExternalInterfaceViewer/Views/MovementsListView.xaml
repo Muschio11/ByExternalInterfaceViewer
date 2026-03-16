@@ -5,8 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ByExternalInterfaceViewer.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+            >
     <Grid>
-        <Label Content="Movements List" FontSize="20" FontWeight="Bold" Margin="10"/>
+        <DataGrid ItemsSource="{Binding Movements}"
+          AutoGenerateColumns="True"
+          CanUserAddRows="False"
+          CanUserDeleteRows="False"
+          IsReadOnly="True"
+          Margin="10"/>
+            
+            
+            
+            
+        
+        
     </Grid>
 </UserControl>

@@ -10,7 +10,7 @@ public class MovementsListModel
     public double Width { get; set; }
     public double Thickness { get; set; }
     public int Quantity { get; set; }
-    public string? SheetType { get; set; }
+    public string SheetType { get; set; }
     public string? CuttingPlan { get; set; }
     public string? Description { get; set; }
     public string? DocumentName { get; set; }
@@ -29,7 +29,7 @@ public class MovementsListModel
     public string? additionalField9 { get; set; }
     public string? additionalField10 { get; set; }
     public string? Icon { get; set; }
-    public long SheetGUID { get; set; }
-    public short Elab { get; set; }
-    public DateTime DataElab { get; set; }
+    public long? SheetGUID { get; set; }
+    public short? Elab { get; set; }
+    public DateTime? DataElab { get; set; }
 }

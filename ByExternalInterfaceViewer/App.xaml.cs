@@ -41,7 +41,7 @@ public partial class App : Application
                 services.AddTransient<MainWindow>();
                 services.AddTransient<MainWindowViewModel>();
                 services.AddTransient<CassetteContentsViewModel>();
-                services.AddTransient<MovementsListViewModel>();
+                services.AddSingleton<MovementsListViewModel>();
             })
             .Build();
     }

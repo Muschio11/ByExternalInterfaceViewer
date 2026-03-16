@@ -38,8 +38,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <RadioButton Grid.Column="0" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Movimentazioni" IsChecked="{Binding IsView1Selected}" Command="{Binding ShowMovementsListCommand}"/>
-                <RadioButton Grid.Column="1" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Contenuto Cassetti" IsChecked="{Binding IsView2Selected}" Command="{Binding ShowCassetteContentListCommand}"/>
+                <RadioButton Grid.Column="0" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Movimentazioni" IsChecked="True" Command="{Binding ShowMovementsListCommand}"/>
+                <RadioButton Grid.Column="1" Style="{StaticResource MenuRadioButtonStyle}" Content="Elenco Contenuto Cassetti"  Command="{Binding ShowCassetteContentListCommand}"/>
 
             </Grid>
         </StackPanel>
