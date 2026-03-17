@@ -1,4 +1,6 @@
-﻿using ByExternalInterfaceViewer.ViewModels;
+﻿using ByExternalInterfaceViewer.Models.ExternalinterfaceDBModels;
+using ByExternalInterfaceViewer.ViewModels;
+using System.Windows;
 
 namespace ByExternalInterfaceViewer.Views
 {
@@ -12,7 +14,8 @@ namespace ByExternalInterfaceViewer.Views
             InitializeComponent();
          
         }
+    
 
- 
+
     }
 }

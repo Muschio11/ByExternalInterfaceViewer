@@ -4,21 +4,71 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ByExternalInterfaceViewer.Views"
+             xmlns:services="clr-namespace:ByExternalInterfaceViewer.Services"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-            >
+             d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
-        <DataGrid ItemsSource="{Binding Movements}"
-          AutoGenerateColumns="True"
-          CanUserAddRows="False"
-          CanUserDeleteRows="False"
-          IsReadOnly="True"
-          Margin="10"/>
+        <DataGrid ItemsSource="{Binding Movements}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Margin="10"
+          EnableRowVirtualization="True"
+          EnableColumnVirtualization="True"
+          VirtualizingPanel.IsVirtualizing="True"
+          VirtualizingPanel.VirtualizationMode="Recycling">
+
             
-            
-            
-            
-        
-        
+
+            <DataGrid.Resources>
+                <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+                <services:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter"/>
+                <services:ListContainsToBoolConverter x:Key="ListContainsToBoolConverter"/>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <!-- Colonna OperationID -->
+                <DataGridTextColumn Binding="{Binding OperationID}" Width="*">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Operation ID" Margin="0,0,5,0"/>
+                                    <ToggleButton x:Name="FilterToggleButton" Content="▼" Width="16"/>
+                                </StackPanel>
+
+                                <!-- Popup filtro -->
+                                <Popup Placement="Bottom" PlacementTarget="{Binding ElementName=FilterToggleButton}" StaysOpen="False"
+                               IsOpen="{Binding IsChecked, ElementName=FilterToggleButton, Mode=TwoWay}">
+                                    <Border Background="White" BorderBrush="Gray" BorderThickness="1" Padding="5" Width="250">
+                                        <StackPanel>
+                                            <!-- TextBox ricerca -->
+                                            <TextBox Text="{Binding OperationIdFilter.SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,5"/>
+                                            <TextBlock Text="Search..." Foreground="Gray" IsHitTestVisible="False"
+                                               Visibility="{Binding Text, ElementName=SearchBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+
+                                            <!-- Select/Deselect All -->
+                                            <CheckBox Content="Select/Deselect All" IsChecked="{Binding OperationIdFilter.IsAllSelected}" Margin="0,0,0,5"/>
+
+                                            <!-- Lista valori filtrati -->
+                                            <ScrollViewer Height="200">
+                                                <ItemsControl ItemsSource="{Binding OperationIdFilter.FilteredValues}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox Content="{Binding}" 
+                                                              IsChecked="{Binding OperationIdFilter.SelectedValues, Converter={StaticResource ListContainsToBoolConverter}, ConverterParameter={Binding}}"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </ScrollViewer>
+
+                                            <!-- Apply -->
+                                            <Button Content="Apply Filter" Command="{Binding ApplyFilterCommand}" Margin="0,5,0,0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Popup>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            </DataGrid>
     </Grid>
 </UserControl>

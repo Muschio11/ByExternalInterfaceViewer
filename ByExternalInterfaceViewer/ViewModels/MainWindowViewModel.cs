@@ -23,6 +23,7 @@ namespace ByExternalInterfaceViewer.ViewModels
             _movementsList = movementsListViewModel;
 
             CurrentViewModel = _movementsList;
+            _=_movementsList.GetMovementsAsync();
         }
 
         [RelayCommand]
@@ -36,12 +37,15 @@ namespace ByExternalInterfaceViewer.ViewModels
         private void ShowCassetteContentList()
         {
             CurrentViewModel = _cassetteContents;
+            _movementsList.StopAutoRefreshMovementList();
         }
 
         [RelayCommand]
-        private void ShowMovementsList()
+        private async void ShowMovementsList()
         {
+            await _movementsList.GetMovementsAsync();
             CurrentViewModel = _movementsList;
+            _movementsList.StartAutoRefreshMovementList();
         }
     }
 
