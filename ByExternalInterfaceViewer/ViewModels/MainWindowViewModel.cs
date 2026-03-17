@@ -33,14 +33,16 @@ namespace ByExternalInterfaceViewer.ViewModels
         }
 
         [RelayCommand]
-        private void ShowCassetteContentList()
+        private async void ShowCassetteContentList()
         {
+            await _cassetteContents.GetCassetteContentsAsync();
             CurrentViewModel = _cassetteContents;
         }
 
         [RelayCommand]
-        private void ShowMovementsList()
+        private async void ShowMovementsList()
         {
+            await _movementsList.GetMovementsAsync();
             CurrentViewModel = _movementsList;
         }
     }

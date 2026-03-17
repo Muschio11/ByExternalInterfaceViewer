@@ -31,7 +31,7 @@ public partial class MovementsListViewModel: ObservableObject
             //var movements = await context.Locations.AsNoTracking().ToListAsync();
             Movements.Clear();
 
-            var query = await context.MovementsList.AsNoTracking().ToListAsync();
+            var query = await context.MovementsList.OrderByDescending(m=>m.OperationID).Take(100).AsNoTracking().ToListAsync();
 
             Movements = new ObservableCollection<MovementsListModel>(query);
 

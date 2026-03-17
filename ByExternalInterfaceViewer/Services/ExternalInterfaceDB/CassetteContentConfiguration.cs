@@ -89,6 +89,9 @@ namespace ByExternalInterfaceViewer.Services.ExternalInterfaceDB
             entity.Property(e => e.AdditionalField10)
                 .HasColumnName("CampoLibero5");
 
+            entity.Property(e => e.DataOperationTime)
+                .HasColumnName("DataAssociazione");
+
 
         }
     }
