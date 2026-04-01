@@ -7,11 +7,11 @@
         xmlns:vm="clr-namespace:ByExternalInterfaceViewer.ViewModels"
         xmlns:views="clr-namespace:ByExternalInterfaceViewer.Views"
         mc:Ignorable="d"
-        Title="ByExternal Interface Viewer" Height="768" Width="1024"
+        Title="ByExternal Interface Viewer" Height="1050" Width="1680"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        AllowsTransparency="True">
-    <Grid Background="#FF211B1B">
+        MouseDown="Window_MouseDown">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="50"/>
@@ -27,12 +27,12 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Exit" Command="{Binding ExitCommand}" Foreground="Black"/>
             </MenuItem>
-            <MenuItem Header="Options">
+            <!--<MenuItem Header="Options">
                 <MenuItem Header="_Refresh" Command="{Binding SettingsCommand}"/>
-            </MenuItem>
+            </MenuItem>-->
         </Menu>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Background="#FF211B1B">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -43,9 +43,21 @@
 
             </Grid>
         </StackPanel>
-        
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid  Background="#FF211B1B">
+                <ContentControl  Content="{Binding CurrentViewModel}"/>
+            </Grid>
+            <StackPanel Grid.Column="1" Background="Red">
+                <ContentControl Grid.Column="1" />
+            </StackPanel>
+         
+        </Grid>
 
-        <ContentControl Grid.Row="2" Content="{Binding CurrentViewModel}"/>
+        
 
     </Grid>
 </Window>
