@@ -6,7 +6,7 @@ namespace ByExternalInterfaceViewer.Models.Database3DBModels
 {
     public class LocationModel
     {
-        public string LocationID { get; set; }
+        public int LocationID { get; set; }
         public string LocationType { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace ByExternalInterfaceViewer.Services.ExternalInterfaceDB
             entity.Property(e => e.MaterialDescription)
                 .HasColumnName("DescrizioneMateriale");
 
-            entity.Property(e => e.Lenght)
+            entity.Property(e => e.Length)
                 .HasColumnName("Larghezza");
 
             entity.Property(e => e.Width)
@@ -62,34 +62,34 @@ namespace ByExternalInterfaceViewer.Services.ExternalInterfaceDB
             entity.Property(e => e.LocationID)
                 .HasColumnName("Locazione");
 
-            entity.Property(e => e.additionalField1)
+            entity.Property(e => e.AdditionalField1)
                 .HasColumnName("CampoChiave1");
 
-            entity.Property(e => e.additionalField2)
+            entity.Property(e => e.AdditionalField2)
                 .HasColumnName("CampoChiave2");
 
-            entity.Property(e => e.additionalField3)
+            entity.Property(e => e.AdditionalField3)
                 .HasColumnName("CampoChiave3");
 
-            entity.Property(e => e.additionalField4)
+            entity.Property(e => e.AdditionalField4)
                 .HasColumnName("CampoChiave4");
 
-            entity.Property(e => e.additionalField5)
+            entity.Property(e => e.AdditionalField5)
                 .HasColumnName("CampoChiave5");
 
-            entity.Property(e => e.additionalField6)
+            entity.Property(e => e.AdditionalField6)
                 .HasColumnName("CampoLibero1");
 
-            entity.Property(e => e.additionalField7)
+            entity.Property(e => e.AdditionalField7)
                 .HasColumnName("CampoLibero2");
 
-            entity.Property(e => e.additionalField8)
+            entity.Property(e => e.AdditionalField8)
                 .HasColumnName("CampoLibero3");
 
-            entity.Property(e => e.additionalField9)
+            entity.Property(e => e.AdditionalField9)
                 .HasColumnName("CampoLibero4");
 
-            entity.Property(e => e.additionalField10)
+            entity.Property(e => e.AdditionalField10)
                 .HasColumnName("CampoLibero5");
 
             entity.Property(e => e.Icon)
@@ -101,7 +101,7 @@ namespace ByExternalInterfaceViewer.Services.ExternalInterfaceDB
             entity.Property(e => e.Elab)
                .HasColumnName("Elab");
 
-            entity.Property(e => e.DataElab)
+            entity.Property(e => e.DateElab)
                .HasColumnName("DataElab");
         }
     }
