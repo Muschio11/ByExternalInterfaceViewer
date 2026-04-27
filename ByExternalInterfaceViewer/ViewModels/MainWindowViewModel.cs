@@ -12,17 +12,22 @@ namespace ByExternalInterfaceViewer.ViewModels
     {
         private readonly CassetteContentsViewModel _cassetteContents;
         private readonly MovementsListViewModel _movementsList;
+        private readonly FilterMovementsViewModel _filterMovements;
 
         [ObservableProperty]
         private ObservableObject _currentViewModel;
+        [ObservableProperty]
+        private FilterMovementsViewModel _filterViewModel;
 
 
-        public MainWindowViewModel(CassetteContentsViewModel cassetteContentsViewModel, MovementsListViewModel movementsListViewModel)
+        public MainWindowViewModel(CassetteContentsViewModel cassetteContentsViewModel, MovementsListViewModel movementsListViewModel, FilterMovementsViewModel filterMovementsViewModel)
         {
             _cassetteContents = cassetteContentsViewModel;
             _movementsList = movementsListViewModel;
+            _filterMovements = filterMovementsViewModel;
 
             CurrentViewModel = _movementsList;
+            FilterViewModel = _filterMovements;
         }
 
         [RelayCommand]
@@ -44,6 +49,7 @@ namespace ByExternalInterfaceViewer.ViewModels
         {
             await _movementsList.GetMovementsAsync();
             CurrentViewModel = _movementsList;
+            FilterViewModel= _filterMovements;
         }
     }
 
