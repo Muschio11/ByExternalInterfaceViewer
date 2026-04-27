@@ -49,11 +49,13 @@
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
             <Grid  Background="#FF211B1B">
-                <ContentControl  Content="{Binding CurrentViewModel}"/>
+                <ContentControl  Content="{Binding CurrentViewModel}"
+                                 Margin="10"/>
+                
             </Grid>
-            <StackPanel Grid.Column="1" Background="Red">
-                <ContentControl Grid.Column="1" />
-            </StackPanel>
+            <Border Grid.Column="1" Background="#FF211B1B" BorderBrush="Red" BorderThickness="2" Height="965" Width="300" VerticalAlignment="Top">
+                <ContentControl  Content="{Binding FilterViewModel}"/>
+            </Border>
          
         </Grid>
 

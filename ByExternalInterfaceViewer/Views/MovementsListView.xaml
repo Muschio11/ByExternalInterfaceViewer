@@ -30,7 +30,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Operation N." 
                                     Binding="{Binding OperationID}"/>
-                <DataGridTextColumn Header="OperationTime" 
+                <DataGridTextColumn Header="Operation Date" 
                                     Binding="{Binding OperationTime, StringFormat=dd/MM/yyyy - HH:mm}" />
                 <DataGridTextColumn Header="Location ID" 
                                     Binding="{Binding LocationID}" />
