@@ -20,7 +20,7 @@ namespace ByExternalInterfaceViewer.Services.ExternalInterfaceDB
             entity.Property(e => e.MaterialDescription)
                 .HasColumnName("DescrizioneMateriale");
 
-            entity.Property(e => e.Lenght)
+            entity.Property(e => e.Length)
                 .HasColumnName("Larghezza");
 
             entity.Property(e => e.Width)

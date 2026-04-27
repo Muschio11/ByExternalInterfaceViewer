@@ -5,7 +5,7 @@ public class CassetteContentsListModel
     public int SheetGUID { get; set; }
     public string? MaterialName { get; set; }
     public string? MaterialDescription { get; set; }
-    public double? Lenght { get; set; } 
+    public double? Length { get; set; } 
     public double? Width { get; set; }
     public double? Thickness { get; set; }
     public int? Quantity { get; set; }
