@@ -8,10 +8,76 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DataGrid ItemsSource="{Binding CassetteContents}"
-  AutoGenerateColumns="True"
-  CanUserAddRows="False"
-  CanUserDeleteRows="False"
-  IsReadOnly="True"
-  Margin="10"/>
+ AutoGenerateColumns="False"
+CanUserAddRows="False"
+CanUserDeleteRows="False"
+IsReadOnly="True"
+Margin="10"     
+ScrollViewer.HorizontalScrollBarVisibility="Auto"       
+ScrollViewer.VerticalScrollBarVisibility="Auto"
+ScrollViewer.CanContentScroll="False" 
+AlternatingRowBackground="LightGray"
+FontWeight="Bold"
+RowHeight="30"
+HorizontalContentAlignment="Center">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sheet GUID" 
+                                    Binding="{Binding SheetGUID}"/>
+                <DataGridTextColumn Header="Material Code" 
+                                    Binding="{Binding MaterialName}"/>
+                <DataGridTextColumn Header="Material Description" 
+                                    Binding="{Binding MaterialDescription}"/>
+                <DataGridTextColumn Header="Length" 
+                                    Binding="{Binding Length}"/>
+                <DataGridTextColumn Header="Width" 
+                                    Binding="{Binding Width}"/>
+                <DataGridTextColumn Header="Thickness" 
+                                    Binding="{Binding Thickness}"/>
+                <DataGridTextColumn Header="Quantity" 
+                                    Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Sheet Type" 
+                                    Binding="{Binding SheetType}"/>
+                <DataGridTextColumn Header="Cutting Plan" 
+                                    Binding="{Binding CuttingPlan}"/>
+                <DataGridTextColumn Header="Description" 
+                                    Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Supplier Document" 
+                                    Binding="{Binding DocumentName}"/>
+                <DataGridTextColumn Header="Supplier Name" 
+                                    Binding="{Binding SupplierName}"/>
+                <DataGridTextColumn Header="Cassette ID" 
+                                    Binding="{Binding CassetteID}"/>
+                <DataGridTextColumn Header="Location ID" 
+                                    Binding="{Binding LocationID}"/>
+                <DataGridTextColumn Header="Icon" 
+                                    Binding="{Binding Icon}"/>
+                <DataGridTextColumn Header="Status" 
+                                    Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Additional Field 1" 
+                                    Binding="{Binding AdditionalField1}"/>
+                <DataGridTextColumn Header="Additional Field 2" 
+                                    Binding="{Binding AdditionalField2}"/>
+                <DataGridTextColumn Header="Additional Field 3" 
+                                    Binding="{Binding AdditionalField3}"/>
+                <DataGridTextColumn Header="Additional Field 4" 
+                                    Binding="{Binding AdditionalField4}"/>
+                <DataGridTextColumn Header="Additional Field 5" 
+                                    Binding="{Binding AdditionalField5}"/>
+                <DataGridTextColumn Header="Additional Field 6" 
+                                    Binding="{Binding AdditionalField6}"/>
+                <DataGridTextColumn Header="Additional Field 7" 
+                                    Binding="{Binding AdditionalField7}"/>
+                <DataGridTextColumn Header="Additional Field 8" 
+                                    Binding="{Binding AdditionalField8}"/>
+                <DataGridTextColumn Header="Additional Field 9" 
+                                    Binding="{Binding AdditionalField9}"/>
+                <DataGridTextColumn Header="Additional Field 10" 
+                                    Binding="{Binding AdditionalField10}"/>
+                <DataGridTextColumn Header="Operation Date" 
+                                    Binding="{Binding OperationTime, StringFormat=dd/MM/yyyy - HH:mm}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>
