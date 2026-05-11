@@ -15,13 +15,17 @@
                 <views:CassetteContentsView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:MovementsListViewModel}">
-                <views:MovementsListView/>
+
+            <DataTemplate DataType="{x:Type vm:MovementsListViewModel}">               
+                    <views:MovementsListView/>      
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:FilterMovementsViewModel}">
                 <views:FilterMovementsView/>
             </DataTemplate>
+
+
+
 
 
         </ResourceDictionary>
