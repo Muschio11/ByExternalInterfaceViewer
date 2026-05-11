@@ -6,7 +6,23 @@
              xmlns:local="clr-namespace:ByExternalInterfaceViewer.Views"
              mc:Ignorable="d" 
              d:DesignHeight="1050" d:DesignWidth="300">
+    
+    
     <StackPanel>
+
+        <TextBlock  Text="Line selection" 
+             FontSize="12" 
+             Foreground="White"
+             Margin="10 10"/>
+        
+        <ComboBox Height="30"
+                  Width="100"
+                  FontSize="16"
+                  FontWeight="Heavy"
+                  HorizontalAlignment="Left"
+                  Margin="25 5 0 10"
+                  ItemsSource="{Binding TakeOptions}"
+                  SelectedItem="{Binding FilterService.SelectedLines}"/>
 
         <TextBlock  Text="Operation n. min" 
                     FontSize="12" 
