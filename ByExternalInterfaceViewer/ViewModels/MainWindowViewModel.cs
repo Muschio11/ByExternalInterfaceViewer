@@ -1,33 +1,35 @@
-﻿using System;
+﻿using ByExternalInterfaceViewer.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 namespace ByExternalInterfaceViewer.ViewModels
 {
     public partial class MainWindowViewModel : ObservableObject
     {
-        private readonly CassetteContentsViewModel _cassetteContents;
-        private readonly MovementsListViewModel _movementsList;
-        private readonly FilterMovementsViewModel _filterMovements;
+        private readonly IServiceProvider _serviceProvider;
+        private readonly MovementsFilterService _filterService;
 
         [ObservableProperty]
-        private ObservableObject _currentViewModel;
+        private object _currentViewModel;
+
         [ObservableProperty]
-        private FilterMovementsViewModel _filterViewModel;
+        private object _currentFilterViewModel;
 
 
-        public MainWindowViewModel(CassetteContentsViewModel cassetteContentsViewModel, MovementsListViewModel movementsListViewModel, FilterMovementsViewModel filterMovementsViewModel)
+        public MainWindowViewModel(IServiceProvider serviceProvider, MovementsFilterService filterService)
         {
-            _cassetteContents = cassetteContentsViewModel;
-            _movementsList = movementsListViewModel;
-            _filterMovements = filterMovementsViewModel;
+            _serviceProvider = serviceProvider;
+            _filterService = filterService;
 
-            CurrentViewModel = _movementsList;
-            FilterViewModel = _filterMovements;
+            ShowMovementsList();
+
+
         }
 
         [RelayCommand]
@@ -40,16 +42,18 @@ namespace ByExternalInterfaceViewer.ViewModels
         [RelayCommand]
         private async void ShowCassetteContentList()
         {
-            await _cassetteContents.GetCassetteContentsAsync();
-            CurrentViewModel = _cassetteContents;
+           
+            CurrentViewModel = _serviceProvider.GetRequiredService<CassetteContentsViewModel>();
+            
         }
 
         [RelayCommand]
         private async void ShowMovementsList()
         {
-            await _movementsList.GetMovementsAsync();
-            CurrentViewModel = _movementsList;
-            FilterViewModel= _filterMovements;
+           var vm = _serviceProvider.GetRequiredService<MovementsListViewModel>();
+            _filterService.ActiveViewModel = vm;
+            CurrentViewModel = vm;
+            CurrentFilterViewModel = _serviceProvider.GetRequiredService<FilterMovementsViewModel>();
         }
     }
 

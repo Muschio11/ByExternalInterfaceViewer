@@ -1,31 +1,40 @@
 ﻿using ByExternalInterfaceViewer.Models.Database3DBModels;
 using ByExternalInterfaceViewer.Models.ExternalinterfaceDBModels;
+using ByExternalInterfaceViewer.Services;
 using ByExternalInterfaceViewer.Services.Database3DB;
 using ByExternalInterfaceViewer.Services.ExternalInterfaceDB;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace ByExternalInterfaceViewer.ViewModels;
 
-public partial class MovementsListViewModel: ObservableObject
+public partial class MovementsListViewModel: ObservableObject, IFilterService
 {
    private readonly IDbContextFactory<AppDbContextExternalInterface> _dbContextFactoryExtInt;
     private readonly IDbContextFactory<AppDBContextDatabase3> _dbContextFactoryDb3;
+    private readonly MovementsFilterService _filterService;
 
     [ObservableProperty]
     private ObservableCollection<MovementsListModel> _movements = new ();
+
+    
     
     
 
-    public MovementsListViewModel(IDbContextFactory<AppDbContextExternalInterface> dbContextFactoryExtInt, IDbContextFactory<AppDBContextDatabase3> dbContextFactoryDb3)
+    public MovementsListViewModel(IDbContextFactory<AppDbContextExternalInterface> dbContextFactoryExtInt, IDbContextFactory<AppDBContextDatabase3> dbContextFactoryDb3, MovementsFilterService filterService)
     {
         _dbContextFactoryExtInt = dbContextFactoryExtInt;
         _dbContextFactoryDb3 = dbContextFactoryDb3;
+        _filterService = filterService;
+    
 
         _ =GetMovementsAsync();
     }
+  
+    
 
 
     public async Task GetMovementsAsync()
@@ -39,7 +48,7 @@ public partial class MovementsListViewModel: ObservableObject
             Movements.Clear();
             
             //Query of single Database to perform join
-            var queryMovementList = await contextExtInt.MovementsList.OrderByDescending(m=>m.OperationID).Take(100).AsNoTracking().ToListAsync();
+            var queryMovementList = await contextExtInt.MovementsList.OrderByDescending(m=>m.OperationID).Take(_filterService.SelectedLines).AsNoTracking().ToListAsync();
             var queryLocations = await contextDb3.Locations.Where(l=>l.LocationID != 0 && l.LocationType != "magazzino").AsNoTracking().ToListAsync();
 
             var query = queryMovementList.Join(queryLocations,m=> m.LocationID, l => l.LocationID, (m, l) => new MovementsListModel
@@ -89,5 +98,10 @@ public partial class MovementsListViewModel: ObservableObject
         {
            
         }
+    }
+
+    public async Task RefreshAsync()
+    {
+        await GetMovementsAsync();
     }
 }

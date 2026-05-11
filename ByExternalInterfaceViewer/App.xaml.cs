@@ -40,9 +40,11 @@ public partial class App : Application
                 services.AddTransient<LoginViewModel>();
                 services.AddTransient<MainWindow>();
                 services.AddTransient<MainWindowViewModel>();
+                services.AddSingleton<MovementsFilterService>();
                 services.AddTransient<CassetteContentsViewModel>();
                 services.AddSingleton<MovementsListViewModel>();
-                services.AddSingleton<FilterMovementsViewModel>();
+                services.AddTransient<FilterMovementsViewModel>();
+
             })
             .Build();
     }
